@@ -1,0 +1,64 @@
+SELECT
+    *
+from
+    subscriptions
+WHERE
+    subscription_type_id IN (1, 2, 3)
+    AND `to` >= NOW()
+    `site`.`subscriptions`
+SET
+    `subscription_type_id` = 2
+WHERE
+    `id` = 2591;
+
+UPDATE
+    `site`.`ps_product`
+SET
+    `price` = '340.990000'
+WHERE
+    `id_product` = '6953';
+
+SELECT
+    *
+FROM
+    companies
+where
+    company_name like "%INTREPRINDEREA INDIVIDUALA%"
+
+SELECT
+    company_id, name
+FROM
+    company_managers
+GROUP BY
+    company_id, name
+HAVING
+    (COUNT(*) > 1)
+
+DELETE FROM
+    `radar_main`.`rating_institutions`
+WHERE
+    (`id` = 4);
+
+SELECT
+    qq.quiz_id,
+    qq.question_rom,
+    qqa.quiz_question_id,
+    qqa.answer_rom,
+    qqa.is_correct,
+    qqa.is_medium,
+    qqa.is_false,
+    qqa.points
+FROM
+    quiz_question_answers AS qqa
+    LEFT JOIN quiz_questions AS qq ON qqa.quiz_question_id = qq.id
+    LEFT JOIN quizzes AS q ON q.id = qq.id
+WHERE
+    qqa.quiz_question_id IN (55)
+
+SELECT
+    users.name,
+    subscriptions.subscription_type_id,
+    users.id
+FROM
+    users
+    JOIN subscriptions ON users.id = subscriptions.user_id
