@@ -1,12 +1,33 @@
-### From table *subscriptions* where column *subscription_type_id* value is 1 and 2 and 3 AND column *to* is more or equal date now select all records:
+### Show all records from table with several conditions and date condition:
 ```
 SELECT * FROM subscriptions WHERE subscription_type_id IN (1, 2, 3) AND to >= NOW()
 ```
-### Set *price* 340.990000 to product with *id_product* value 6953 in table *site.ps_product*: 
+### Update table with new price for a product:
 ```
-UPDATE site.ps_product SET price = '340.990000' WHERE id_product = '6953';
+UPDATE ps_product SET price = '340.990000' WHERE id_product = '6953';
 ```
-### From table `companies` show all records if there is a phrase `SELF BUSINES` in the `company_name` column:
+### Show all values from table where name contains some phrase
 ```
 SELECT * FROM companies WHERE company_name like "%SELF BUSINES%"
+```
+### Delete row from table
+```
+DELETE FROM rating_institutions WHERE id = 4
+```
+### Show several values with conditions from two tables in one table 
+```
+SELECT qq.quiz_id, qqa.points
+FROM
+    quiz_question_answers AS qqa
+    LEFT JOIN quiz_questions AS qq ON qqa.quiz_question_id = qq.id
+WHERE
+    qqa.points IN (55,155)
+
+SELECT
+    users.name,
+    subscriptions.subscription_type_id,
+    users.id
+FROM
+    users
+    JOIN subscriptions ON users.id = subscriptions.user_id
 ```
