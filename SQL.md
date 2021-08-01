@@ -57,61 +57,61 @@ UPDATE Customers SET ContactName = 'Alfred Schmidt', City= 'Frankfurt' WHERE Cus
 
 # DELETE
 
-### Delete record from table
+### Delete record from a table
 ```sql
 DELETE FROM rating_institutions WHERE id = 4
 ```
 
 # IN
 
-### Show all records from table with several conditions and date condition:
+### Show all records from a table with several conditions and date condition
 ```sql
 SELECT * FROM subscriptions WHERE subscription_type_id IN (1, 2, 3) AND to >= NOW()
 ```
-### Show all records from table with several another table's conditions
+### Show all records from a table with another table's condition
 ```sql
 SELECT * FROM Customers WHERE Country IN (SELECT Country FROM Suppliers);
 ```
 
 # LIKE
 
-### Show all records from table where name contains phrase
+### Show all records from a table where name contains a phrase
 ```sql
 SELECT * FROM companies WHERE company_name like "%SELF BUSINES%"
 ```
-### Show all records from table where name begins with phrase
+### Show all records from a table where name begins with a phrase
 ```sql
 SELECT * FROM companies WHERE company_name like "SELF BUSINES%"
 ```
-### Show all records from table where name ends with phrase
+### Show all records from a table where name ends with a phrase
 ```sql
 SELECT * FROM companies WHERE company_name like "%SELF BUSINES"
 ```
 
-# ORDER BY
+# ORDER BY and DISTINCT
 
-### Select all distinct records from table ordered and sorting in descending order
+### Select all distinct records from a table ordered and sorting in descending order
 ```sql
 SELECT DISTINCT * FROM registrations ORDER BY created_at DESC
 ```
-### Select all distinct records from table ordered and sorting in ascendng order
+### Select all distinct records from a table ordered and sorting in ascendng order
 ```sql
 SELECT DISTINCT * FROM registrations ORDER BY created_at
 ```
 
 # NULL
 
-### Show all records from table where client name is not empty
+### Show all records from a table where client name is not empty
 ```sql
 SELECT * FROM subscriptions WHERE client_name is not NULL
 
 ```
-### Show all records from table where client name is empty and sorting from high to low id number 
+### Show all records from a table where client name is empty and sorting from high to low id number 
 ```sql
 SELECT * FROM subscriptions WHERE client_name is NULL ORDER BY id DESC
 
 ```
-### Show all records from table where client name is empty and sorting from low to high id number 
+### Show all records from a table where client name is empty and sorting from low to high id number 
 ```sql
 SELECT * FROM subscriptions WHERE client_name is NULL ORDER BY id
 
@@ -119,22 +119,22 @@ SELECT * FROM subscriptions WHERE client_name is NULL ORDER BY id
 
 # LIMIT
 
-### Select all records from table with condition and show maximum 10 results
+### Select all records from a table with condition and show maximum 10 results
 ```sql
 SELECT * FROM companies WHERE status = 'closed' LIMIT 10
 ```
 
 # AND, OR
 
-### Select all records from table where condition 1 AND condition 2 should be met
+### Select all records from a table where condition 1 AND condition 2 should be met
 ```sql
 SELECT * FROM Customers WHERE Country='Germany' AND City='Berlin'
 ```
-### Select all records from table where condition 1 OR condition 2 should be met
+### Select all records from a table where condition 1 OR condition 2 should be met
 ```sql
 SELECT * FROM Customers WHERE Country='Germany' OR City='Berlin'
 ```
-### Select all records from table where condition 1 AND condition 2 OR condition 1 AND condition 3 should be met
+### Select all records from a table where condition 1 AND condition 2 OR condition 1 AND condition 3 should be met
 ```sql
 SELECT * FROM Customers WHERE Country='Germany' AND (City='Berlin' OR City='München')
 ```
