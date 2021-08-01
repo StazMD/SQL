@@ -1,11 +1,80 @@
-### Show all records from table with several conditions and date condition:
+# JOINS
+
+### Show several records with conditions from two tables in one table 
 ```sql
-SELECT * FROM subscriptions WHERE subscription_type_id       (1, 2, 3) AND to >= NOW()
+SELECT
+    qq.quiz_id, 
+    qqa.points
+FROM
+    quiz_question_answers AS qqa
+LEFT JOIN quiz_questions AS qq ON qqa.quiz_question_id = qq.id
+WHERE
+    qqa.points IN (55,155)
 ```
+```sql
+SELECT 
+    Orders.OrderID,
+    Employees.LastName, 
+    Employees.FirstName
+FROM
+    Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID
+```
+```sql
+SELECT
+    users.id,
+    users.name,
+    subscriptions.subscription_type_id
+FROM
+    users
+JOIN subscriptions ON users.id = subscriptions.user_id
+```
+
+# INSERT INTO
+
+### Insert new records in a table in specific columns
+```sql
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway')
+```
+### Add values for all the columns of the table
+```sql
+INSERT INTO Customers
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway')
+```
+
+# UPDATE
+
 ### Update table record with new price for a product:
 ```sql
-UPDATE ps_product SET price = '340.990000' WHERE id_product = '6953';
+UPDATE ps_product SET price = '340.990000' WHERE id_product = '6953'
 ```
+### Update several records in a table
+```sql
+UPDATE Customers SET ContactName = 'Alfred Schmidt', City= 'Frankfurt' WHERE CustomerID = 1;
+```
+
+# DELETE
+
+### Delete record from table
+```sql
+DELETE FROM rating_institutions WHERE id = 4
+```
+
+# IN
+
+### Show all records from table with several conditions and date condition:
+```sql
+SELECT * FROM subscriptions WHERE subscription_type_id IN (1, 2, 3) AND to >= NOW()
+```
+### Show all records from table with several another table's conditions
+```sql
+SELECT * FROM Customers WHERE Country IN (SELECT Country FROM Suppliers);
+```
+
+# LIKE
+
 ### Show all records from table where name contains phrase
 ```sql
 SELECT * FROM companies WHERE company_name like "%SELF BUSINES%"
@@ -18,28 +87,20 @@ SELECT * FROM companies WHERE company_name like "SELF BUSINES%"
 ```sql
 SELECT * FROM companies WHERE company_name like "%SELF BUSINES"
 ```
-### Delete record from table
+
+# ORDER BY
+
+### Select all distinct records from table ordered and sorting in descending order
 ```sql
-DELETE FROM rating_institutions WHERE id = 4
+SELECT DISTINCT * FROM registrations ORDER BY created_at DESC
 ```
-### Show several records with conditions from two tables in one table 
+### Select all distinct records from table ordered and sorting in ascendng order
 ```sql
-SELECT qq.quiz_id, qqa.points
-FROM
-    quiz_question_answers AS qqa
-    LEFT JOIN quiz_questions AS qq ON qqa.quiz_question_id = qq.id
-WHERE
-    qqa.points IN (55,155)
+SELECT DISTINCT * FROM registrations ORDER BY created_at
 ```
-```sql
-SELECT
-    users.id
-    users.name,
-    subscriptions.subscription_type_id,
-FROM
-    users
-    JOIN subscriptions ON users.id = subscriptions.user_id
-```
+
+# NULL
+
 ### Show all records from table where client name is not empty
 ```sql
 SELECT * FROM subscriptions WHERE client_name is not NULL
@@ -55,14 +116,16 @@ SELECT * FROM subscriptions WHERE client_name is NULL ORDER BY id DESC
 SELECT * FROM subscriptions WHERE client_name is NULL ORDER BY id
 
 ```
+
+# LIMIT
+
 ### Select all records from table with condition and show maximum 10 results
 ```sql
 SELECT * FROM companies WHERE status = 'closed' LIMIT 10
 ```
-### Select all distinct records from table ordered and sorting in descending order
-```sql
-SELECT DISTINCT * FROM registrations ORDER BY created_at DESC
-```
+
+# AND, OR
+
 ### Select all records from table where condition 1 AND condition 2 should be met
 ```sql
 SELECT * FROM Customers WHERE Country='Germany' AND City='Berlin'
@@ -75,17 +138,15 @@ SELECT * FROM Customers WHERE Country='Germany' OR City='Berlin'
 ```sql
 SELECT * FROM Customers WHERE Country='Germany' AND (City='Berlin' OR City='München')
 ```
-### Insert new records in a table in specific columns
-```sql
-INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
-VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway')
-```
-### Add values for all the columns of the table
-```sql
-INSERT INTO Customers
-VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway')
-```
+
+# BETWEEN
+
 ### Select all records from a table where price is between some values
 ```sql
 SELECT * FROM Products WHERE Price BETWEEN 10 AND 20
+```
+
+### Select all records from a table orderDate date is between some dates
+```sql
+SELECT * FROM Orders WHERE OrderDate BETWEEN '2021-07-04' AND '2021-07-08'
 ```
