@@ -50,7 +50,7 @@ VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway
 
 ### Update table record with new price for a product:
 ```sql
-UPDATE ps_product SET price = '340.990000' WHERE id_product = '6953'
+UPDATE ps_product SET price = '340' WHERE id_product = 6953
 ```
 ### Update several records in a table
 ```sql
