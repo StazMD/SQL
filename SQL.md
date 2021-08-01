@@ -15,14 +15,15 @@ SELECT * FROM companies WHERE company_name like "%SELF BUSINES%"
 DELETE FROM rating_institutions WHERE id = 4
 ```
 ### Show several values with conditions from two tables in one table 
-```
+```sql
 SELECT qq.quiz_id, qqa.points
 FROM
     quiz_question_answers AS qqa
     LEFT JOIN quiz_questions AS qq ON qqa.quiz_question_id = qq.id
 WHERE
     qqa.points IN (55,155)
-
+```
+```sql
 SELECT
     users.name,
     subscriptions.subscription_type_id,
