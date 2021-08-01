@@ -6,7 +6,7 @@ SELECT * FROM subscriptions WHERE subscription_type_id IN (1, 2, 3) AND to >= NO
 ```
 UPDATE site.ps_product SET price = '340.990000' WHERE id_product = '6953';
 ```
-### From table **companies** show all records if there is a phrase *SELF BUSINES* in the **company_name** column:
+### From table `companies` show all records if there is a phrase `SELF BUSINES` in the `company_name` column:
 ```
 SELECT * FROM companies WHERE company_name like "%SELF BUSINES%"
 ```
