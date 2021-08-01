@@ -1,1 +1,1 @@
-# sql-examples
+# SQL
