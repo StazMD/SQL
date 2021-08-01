@@ -7,7 +7,8 @@ SELECT
     qqa.points
 FROM
     quiz_question_answers AS qqa
-LEFT JOIN quiz_questions AS qq ON qqa.quiz_question_id = qq.id
+LEFT JOIN 
+    quiz_questions AS qq ON qqa.quiz_question_id = qq.id
 WHERE
     qqa.points IN (55,155)
 ```
@@ -18,7 +19,8 @@ SELECT
     Employees.FirstName
 FROM
     Orders
-RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+RIGHT JOIN 
+    Employees ON Orders.EmployeeID = Employees.EmployeeID
 ORDER BY Orders.OrderID
 ```
 ```sql
