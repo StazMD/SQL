@@ -54,7 +54,7 @@ UPDATE ps_product SET price = '340' WHERE id_product = 6953
 ```
 ### Update several records in a table
 ```sql
-UPDATE Customers SET ContactName = 'Alfred Schmidt', City= 'Frankfurt' WHERE CustomerID = 1;
+UPDATE Customers SET ContactName = 'Alfred Schmidt', City = 'Frankfurt' WHERE CustomerID = 1;
 ```
 
 # DELETE
@@ -130,15 +130,15 @@ SELECT * FROM companies WHERE status = 'closed' LIMIT 10
 
 ### Select all records from a table where condition 1 AND condition 2 should be met
 ```sql
-SELECT * FROM Customers WHERE Country='Germany' AND City='Berlin'
+SELECT * FROM Customers WHERE Country='Germany' AND City = 'Berlin'
 ```
 ### Select all records from a table where condition 1 OR condition 2 should be met
 ```sql
-SELECT * FROM Customers WHERE Country='Germany' OR City='Berlin'
+SELECT * FROM Customers WHERE Country='Germany' OR City = 'Berlin'
 ```
 ### Select all records from a table where condition 1 AND condition 2 OR condition 1 AND condition 3 should be met
 ```sql
-SELECT * FROM Customers WHERE Country='Germany' AND (City='Berlin' OR City='München')
+SELECT * FROM Customers WHERE Country='Germany' AND (City = 'Berlin' OR City = 'München')
 ```
 
 # BETWEEN
