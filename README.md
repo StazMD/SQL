@@ -1,4 +1,4 @@
-# SQL
+# SQL queries that I use in my daily work
 
 JOINS, INSERT INTO, UPDATE, DELETE, IN, LIKE, ORDER BY, DISTINCT, NULL, LIMIT, AND, OR, BETWEEN
 
