@@ -100,9 +100,17 @@ SELECT * FROM companies WHERE company_name like "%SELF BUSINES"
 ```sql
 SELECT DISTINCT * FROM registrations ORDER BY created_at DESC
 ```
-### Select all distinct records from a table ordered and sorting in ascendng order
+### Select all distinct records from a table ordered and sorting in ascending order
 ```sql
 SELECT DISTINCT * FROM registrations ORDER BY created_at
+```
+
+# NESTED QUERY
+
+### Show second max result 
+
+```sql
+SELECT MAX(user_id) FROM users WHERE user_id < (SELECT max(user_id) FROM users)
 ```
 
 # NULL
